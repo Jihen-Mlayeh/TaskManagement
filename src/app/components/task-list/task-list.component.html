@@ -1,1 +1,40 @@
-<p>task-list works!</p>
+<mat-card class="search-bar">
+    <mat-form-field appearance="outline">
+        <mat-label>Search for a task</mat-label>
+        <input matInput [(ngModel)]="searchText"(keyup)="filterTask()">
+
+    </mat-form-field>
+
+</mat-card>
+<div  class="task-columns">
+    <!--en Atente-->
+    <div class="task-column">
+        <h3>Waiting</h3>
+        <div cdkDropList cdkDropListData="enAttenteTasks">
+            <mat-card *ngFor="let task of enAttenteTasks"cdkDrag>
+                <app-task-item [task]="task"></app-task-item>
+            </mat-card>
+        </div>
+    </div>
+
+     <!--en Cours-->
+     <div class="task-column">
+        <h3>In progress</h3>
+        <div cdkDropList cdkDropListData="enCoursTasks">
+            <mat-card *ngFor="let task of enCoursTasks"cdkDrag>
+                <app-task-item [task]="task"></app-task-item>
+            </mat-card>
+        </div>
+    </div>
+     <!--Faite-->
+     <div class="task-column">
+        <h3>Done</h3>
+        <div cdkDropList cdkDropListData="FaitTasks">
+            <mat-card *ngFor="let task of FaitTasks"cdkDrag>
+                <app-task-item [task]="task"></app-task-item>
+            </mat-card>
+        </div>
+    </div>
+
+
+</div>

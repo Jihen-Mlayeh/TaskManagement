@@ -1,0 +1,17 @@
+.task-columns
+{
+    display:flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.task-column{
+    width: 30%;
+    background-color: #f5f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+}
+mat-card{
+    margin-bottom: 10px;
+
+
+}

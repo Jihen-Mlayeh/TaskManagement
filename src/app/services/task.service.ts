@@ -15,12 +15,12 @@ export class TaskService  implements TaskInterface{
     return this.http.get<Task[]>(this.apiUrl);
   }
   addTasks(task: Task): Observable<Task> {
-    throw new Error('Method not implemented.');
-  }
+    return this.http.post<Task>(this.apiUrl,task);
+    }
   updateTasks(task: Task): Observable<Task> {
-    throw new Error('Method not implemented.');
+    return this.http.put<Task>(`${this.apiUrl}/${task.id}`,task);
   }
   deleteTasks(id: number): Observable<void> {
-    throw new Error('Method not implemented.');
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
