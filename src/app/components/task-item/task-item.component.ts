@@ -11,6 +11,16 @@ export class TaskItemComponent {
   @Input() task!:Task;
   @Output() edit=new EventEmitter<Task>();
   @Output() delete=new EventEmitter<number>();
+  
+
+  onEdit():void{
+    this.edit.emit(this.task);
+  }
+
+  onDelete():void{
+    this.delete.emit(this.task.id);
+  }
+
 
 
 }

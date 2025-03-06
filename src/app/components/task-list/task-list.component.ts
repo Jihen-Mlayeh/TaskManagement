@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/task';
 import { TaskService } from '../../services/task.service';
+import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task-list',
@@ -45,6 +46,29 @@ export class TaskListComponent implements OnInit{
     this.enAttenteTasks=filtered.filter(t=>t.status==='EN_ATTENTE');
     this.FaitTasks=filtered.filter(t=>t.status==='FAITE');
     this.enCoursTasks=filtered.filter(t=>t.status==='EN_COURS');
+
+  }
+  drop(event:any,newStatus:'EN_ATTENTE' | 'EN_COURS' |'FAITE')
+  {
+    if(event.previousContainer!=event.container)
+      {
+        const tacheActuelle=event.item.data;
+        tacheActuelle.status=newStatus;
+        this.taskService.updateTasks(tacheActuelle).subscribe(()=>
+          {
+            transferArrayItem(
+              event.previousContainer.data,// delete old data
+              event.container.data,// update the new data
+              event.previousIndex,// delete old index
+              event.currentIndex//update new index
+            )
+          })
+
+            
+
+      }
+
+
 
   }
 

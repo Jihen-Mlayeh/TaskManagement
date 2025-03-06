@@ -10,7 +10,7 @@
     <!--en Atente-->
     <div class="task-column">
         <h3>Waiting</h3>
-        <div cdkDropList cdkDropListData="enAttenteTasks">
+        <div cdkDropList cdkDropListData="enAttenteTasks" (cdkDropListDropped)="drop($event,'EN_COURS')">
             <mat-card *ngFor="let task of enAttenteTasks"cdkDrag>
                 <app-task-item [task]="task"></app-task-item>
             </mat-card>
@@ -20,7 +20,7 @@
      <!--en Cours-->
      <div class="task-column">
         <h3>In progress</h3>
-        <div cdkDropList cdkDropListData="enCoursTasks">
+        <div cdkDropList cdkDropListData="enCoursTasks" (cdkDropListDropped)="drop($event,'FAITE')">
             <mat-card *ngFor="let task of enCoursTasks"cdkDrag>
                 <app-task-item [task]="task"></app-task-item>
             </mat-card>
@@ -29,7 +29,7 @@
      <!--Faite-->
      <div class="task-column">
         <h3>Done</h3>
-        <div cdkDropList cdkDropListData="FaitTasks">
+        <div cdkDropList cdkDropListData="FaitTasks" (cdkDropListDropped)="drop($event,'EN_ATTENTE')"> 
             <mat-card *ngFor="let task of FaitTasks"cdkDrag>
                 <app-task-item [task]="task"></app-task-item>
             </mat-card>

@@ -1,5 +1,7 @@
 <mat-card>
     <h4>{{task.title}}</h4>
     <p>{{task.description}}</p>
+    <p>{{task.status}}</p>
+    <button mat-button color="accent"[routerLink]="['edit',task.id]">Upadte</button>
 
 </mat-card>
